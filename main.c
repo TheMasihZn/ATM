@@ -95,7 +95,7 @@ void out(int code) {
             switch (code) {
                 case 1:
                     printf("Lotfan zaban khod ra entekhab konid...\n");
-                    printf("\n 1.Farsi\n 2.English\n 3.Deutsch");
+                    printf("\n 1.Farsi\n 2.English\n 3.Deutsch\n hiiiiiiiiii\n");
                     break;
                 case 2:
                     printf("\n\nGozineh ra vared konid:   ");
