@@ -57,6 +57,20 @@ void out(int code) {
                     break;
                 case 2:
                     printf("\n\nPlease choose:   ");
+                    break;
+                case 5:
+                    printf("\n Enter the current password:   ");
+                    break;
+                case 6:
+                    printf("Enter the new password:   ");
+                    break;
+                case 7:
+                    printf("Your password has changed.");
+                    printf("\n\n\n\npress any key to  continue...");
+                    break;
+                case 8:
+                    printf("Wrong password.\n");
+                    break;
 
                 default:
                     printf("Undefined!");
