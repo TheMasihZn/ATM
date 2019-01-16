@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <time.h>
+#include <stdlib.h>
 //#include <curses.h>
 
 char LANGUAGE = 'F',tmp=' ';
@@ -12,32 +13,39 @@ void userChangePassword();
 void adminMenu();
 
 
+void userMenu();
 
 main() {
-    clock_t before = clock();
-    while (clock()-before<=5000) {
-    }
 
+//    clock_t before = clock();
+//    while (clock()-before<=5000) {
+//    }
 
     language(&LANGUAGE);
-
+//    system("cls");
+     out(3);
     for (int j = 0; j < 4; ++j) {
         scanf("%1d", &password[j]);
     }
-
+    userMenu();
     out(2);             //choice
     scanf("%d", &choice);
 
 
 }
 
+void userMenu() {
+
+
+}
+
 void language(char *l) {
     int i;
-    l = 'F';
     out(1);             //language
     scanf("%d", &i);
     if (i == 2) {
         l = 'E';
+
     }
 }
 
@@ -61,6 +69,9 @@ void out(int code) {
                 case 2:
                     printf("\n\nPlease choose:   ");
                     break;
+                case 3:
+                    printf("Please enter your password:   ");
+
                 case 5:
                     printf("\n Enter the current password:   ");
                     break;
@@ -89,6 +100,9 @@ void out(int code) {
                     break;
                 case 2:
                     printf("\n\nGozineh ra vared konid:   ");
+                    break;
+                case 3:
+                    printf("ramze vorud ra vared konid:");
                     break;
                 case 5:
                     printf("\n Ramze feli ra vared konid:   ");
@@ -134,6 +148,11 @@ void userChangePassword() {
 }
 
 void adminMenu() {
+
+
+
+
+
 
 }
 
