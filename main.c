@@ -1,20 +1,23 @@
 #include <stdio.h>
 #include <time.h>
+//#include <curses.h>
 
-char LANGUAGE = 'F';
+char LANGUAGE = 'F',tmp=' ';
 int choice, tempPass[5], password[5];
 
 int stringCMP(int *a, int *b);
 void out(int);
 void language(char *);
-
 void userChangePassword();
-
-
 void adminMenu();
 
 
+
 main() {
+    clock_t before = clock();
+    while (clock()-before<=5000) {
+    }
+
 
     language(&LANGUAGE);
 
@@ -106,10 +109,6 @@ void out(int code) {
     }
 }
 
-void adminMenu() {
-
-}
-
 void userChangePassword() {
 
     int bool = 1;
@@ -131,6 +130,10 @@ void userChangePassword() {
         }
 
     }
+
+}
+
+void adminMenu() {
 
 }
 
