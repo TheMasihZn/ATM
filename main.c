@@ -2,9 +2,9 @@
 #include <time.h>
 #include <stdlib.h>
 //#include <curses.h>
+char LANGUAGE = 'F', tmp = ' ';
+int choice, moj = 10000000, tempPass[5], password[5], hesab[5][3], count = 0, number = 0, pass = 1, remain = 2, halgheh ,gozineh;
 
-char LANGUAGE = 'F',tmp=' ';
-int choice, tempPass[5], password[5], moj = 10000000,gozineh,halgheh;
 
 int moghayeseh(int *a, int *b);
 void out(int);
@@ -13,20 +13,33 @@ void language(char *);
 void ChangePassword();
 
 
+void adminMenu();
+
+void adminEftetahHesab();
+
 void enteghaleVajh();
 
 
 void daryaftVajh();
+void adminMojoodiKol();
 
-main() {
 
+int main() {
 //    clock_t before = clock();
 //    while (clock()-before<=5000) {
 //    }
-
     language(&LANGUAGE);
 //    system("cls");
      out(3);
+    system ("clear");
+
+    for (int i = 0; i < 5; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            hesab[i][j] = 0;
+        }
+    }
+
+    adminMojoodiKol();
 
     for (int j = 0; j < 4; ++j) {
         scanf("%1d", &password[j]);
@@ -93,11 +106,35 @@ void daryaftVajh() {
 
 }
 
+void adminMojoodiKol() {
+    long sum = 0;
+    for (int i = 0; i <= count; ++i) {
+        sum += hesab[i][remain];
+    }
+    printf("Mojoodi kol hesab ha :  %d", (int) sum);
+}
 
+void adminEftetahHesab() {
+    int tmppassword[4];
+    printf("aya motmaenid?  \n");
+    printf("1.Bale\n2.Kheir\n");
+    int i;
+    scanf("%1d", &i);
+    if (i == 1) {
+        hesab[count][number] = rand();
+        printf("Shomare hesabe moshtari : %d%d\n", hesab[count][0], hesab[count][number] / 10000);
+        scanf("Ramze kart ra vared konid");
 
+        for (int j = 0; j < 4; ++j) {
+            scanf("%1d", &tmppassword[j]);
+        }
+        hesab[count][pass] = tmppassword[0] * 1000 + tmppassword[1] * 100 + tmppassword[2] * 10 + tmppassword[3];
+        hesab[count][remain] = 10000000;
 
+        count++;
 
-
+    }
+}
 
 void language(char *l) {
     int i;
@@ -222,7 +259,7 @@ void ChangePassword(){
         out(5);
         for (int i = 0; i < 4; i++) {
             scanf("%1d", &tempPass[i]);
-                                    }
+        }
 
         if (moghayeseh(tempPass, password)) {
             bool = 0;
@@ -231,9 +268,9 @@ void ChangePassword(){
                 scanf("%1d", &password[j]);
             }
             out(7);
-                                           } else {
+        } else {
             out(8);
-                                                  }
+        }
 
 
                  }
@@ -282,9 +319,6 @@ void enteghaleVajh() {
     scanf("%d", &halgheh);
     //system("cls");
                 }
-
-
-
 
 
 
