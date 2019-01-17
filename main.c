@@ -3,43 +3,32 @@
 #include <stdlib.h>
 //#include <curses.h>
 char LANGUAGE = 'F', tmp = ' ';
-int choice, moj = 10000000, tempPass[5], password[5], hesab[5][3], count = 0, number = 0, pass = 1, remain = 2, halgheh ,gozineh;
-
-
+int choice, moj = 10000000, tempPass[5], password[5], hesab[5][4], count = 0, shomareh = 0, pass = 1, mojoodi = 2,masdoodi=3, halgheh ,gozineh;
+int adminMnue();
 int moghayeseh(int *a, int *b);
 void out(int);
 void language(char *);
-
 void ChangePassword();
-
-
-void adminMenu();
-
 void adminEftetahHesab();
-
 void enteghaleVajh();
-
-
+void adminKolehesab();
 void daryaftVajh();
 void adminMojoodiKol();
-
+void RafeMasdoodi();
 
 int main() {
-//    clock_t before = clock();
-//    while (clock()-before<=5000) {
-//    }
+
+
     language(&LANGUAGE);
 //    system("cls");
      out(3);
     system ("clear");
 
     for (int i = 0; i < 5; ++i) {
-        for (int j = 0; j < 3; ++j) {
+        for (int j = 0; j < 4; ++j) {
             hesab[i][j] = 0;
         }
     }
-
-    adminMojoodiKol();
 
     for (int j = 0; j < 4; ++j) {
         scanf("%1d", &password[j]);
@@ -95,7 +84,7 @@ void daryaftVajh() {
         if (LANGUAGE == 'F')
             printf("\n\n shomareh kart: 6104 3378 **** 4260\n mablagh daryafti:%d rial \n mojoodi:%d rial", temp, moj);
         else if (LANGUAGE == 'E')
-            printf("\n\n kart number: 6104 3378 **** 4260\n:%d rial\n mojoodi:%d rial", temp, moj);
+            printf("\n\n kart shomareh: 6104 3378 **** 4260\n:%d rial\n mojoodi:%d rial", temp, moj);
         // getch();
     }
         out(14);                    ///tasmim edameh
@@ -108,10 +97,12 @@ void daryaftVajh() {
 
 void adminMojoodiKol() {
     long sum = 0;
-    for (int i = 0; i <= count; ++i) {
-        sum += hesab[i][remain];
+
+    for (int i = 0; i <= count; i++) {
+        sum += hesab[i][mojoodi];
     }
     printf("Mojoodi kol hesab ha :  %d", (int) sum);
+
 }
 
 void adminEftetahHesab() {
@@ -121,19 +112,20 @@ void adminEftetahHesab() {
     int i;
     scanf("%1d", &i);
     if (i == 1) {
-        hesab[count][number] = rand();
-        printf("Shomare hesabe moshtari : %d%d\n", hesab[count][0], hesab[count][number] / 10000);
-        scanf("Ramze kart ra vared konid");
+        hesab[count][shomareh] = rand();
+        printf("Shomare hesabe moshtari : %d%d\n", hesab[count][shomareh], hesab[count][shomareh] / 10000);
+        printf("\nRamze kart ra vared konid");
 
         for (int j = 0; j < 4; ++j) {
             scanf("%1d", &tmppassword[j]);
         }
         hesab[count][pass] = tmppassword[0] * 1000 + tmppassword[1] * 100 + tmppassword[2] * 10 + tmppassword[3];
-        hesab[count][remain] = 10000000;
-
+        hesab[count][mojoodi] = 10000000;
+        printf("shomareh hesab:%d%d\nramze hesab:%d\nmojoodi:%d",hesab[count][shomareh],hesab[count][shomareh]/10000,hesab[count][pass],hesab[count][mojoodi]);
         count++;
-
     }
+    out(14);
+    scanf("%d",& halgheh);
 }
 
 void language(char *l) {
@@ -146,6 +138,7 @@ void language(char *l) {
     }
 }
 
+
 int moghayeseh(int *a, int *b) {
     for (int i = 0; i < 4; ++i) {
         if (a[i] != b[i]) {
@@ -154,6 +147,7 @@ int moghayeseh(int *a, int *b) {
     }
     return 1;
 }
+
 
 void out(int code) {
     switch (LANGUAGE) {
@@ -168,6 +162,7 @@ void out(int code) {
                     break;
                 case 3:
                     printf("Please enter your password:   ");
+                    break;
 
                 case 5:
                     printf("\n Enter the current password:   ");
@@ -319,6 +314,75 @@ void enteghaleVajh() {
     scanf("%d", &halgheh);
     //system("cls");
                 }
+
+void adminKolehesab(){
+    printf("kole hesab ha:");
+    int j =1;
+    for(int i=0;i<=count;i++){
+        printf("\n hesabe %d:\n %d%d",j,hesab[i][shomareh], hesab[count][shomareh] / 10000);
+        j++;
+    }
+    out(14);
+    scanf("%d",&halgheh);
+
+
+}
+
+int adminMnue() {do {
+        printf("\n1.Ejade hesab\t\t2.Hazfe hesab\n\n3.Rafe masdoodi\t\t4.Neshane hame hesabha\n\n5.Neshan kol mojoodi ha\t\t6.Khorooj");
+        out(2);
+        scanf("%d", &gozineh);
+        switch (gozineh) {
+            case 1:
+                adminEftetahHesab();
+                break;
+            case 2 :
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+                adminKolehesab();
+
+                break;
+            case 5:
+                adminMojoodiKol();
+                break;
+            case 6:
+                return 0;
+            default:
+                break;
+
+        }
+    }while(halgheh==1);
+}
+
+void RafeMasdoodi(){
+    for (int i = 0; i <= count; ++i) {
+        if(hesab[count][masdoodi]==1)
+            hesab[count][masdoodi]=0;
+        printf("hesab azad shod.");
+
+    }
+}
+void hazfehHesab(){
+    for (int i = 0; i <=count ; ++i) {
+
+        if(hesab[i][shomareh]!=0) {
+            printf("hesab %d:%d%d",i+1, hesab[i][shomareh], hesab[i][shomareh] / 10000);
+
+        }
+    }
+    out(2);
+    scanf("%d",&gozineh);
+    gozineh--;
+    hesab[gozineh][shomareh]=0;
+    hesab[gozineh][pass]=0;
+    hesab[gozineh][mojoodi]=0;
+
+
+}
 
 
 
