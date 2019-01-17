@@ -1,19 +1,28 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+
 #define ADMIN_PASSWORD 1377
 //#include <curses.h>
 char LANGUAGE = 'F', tmp = ' ';
-int choice, moj = 10000000, tempPass[5], password[5], hesab[5][3], count = 0, shomareh = 0, pass = 1, mojoodi = 2,masdoodi=3, halgheh, gozineh,userCount=10;
+int choice, moj = 10000000, tempPass[5], password[5], hesab[5][3], count = 0, shomareh = 0, pass = 1, mojoodi = 2, masdoodi = 3, halgheh, gozineh, userCount = 10;
+
 int adminMnue();
 
 int moghayeseh(int *a, int *b);
+
 void out(int);
+
 void language(char *);
+
 void ChangePassword();
+
 void adminEftetahHesab();
+
 void enteghaleVajh();
+
 void adminKolehesab();
+
 void daryaftVajh();
 
 void adminMenu();
@@ -21,12 +30,12 @@ void adminMenu();
 void adminEftetahHesab();
 
 void adminMojoodiKol();
+
 void RafeMasdoodi();
 
 void voroodeKarbar();
 
 int main() {
-
 
 
     for (int i = 0; i < 5; ++i) {
@@ -43,7 +52,6 @@ int main() {
 
     out(3);
     system("clear");
-
 
 
     do {
@@ -68,8 +76,6 @@ int main() {
                 break;
 
 
-
-
             default:
                 break;
         }
@@ -79,21 +85,21 @@ int main() {
 }
 
 void voroodeKarbar() {
-    int u=0,j;
-    out(4);
-    for ( j = 0; j < 4; ++j) {
+    int u = 0, j;
+    out(3);
+    for (j = 0; j < 4; ++j) {
         scanf("%1d", &tempPass[j]);
 
     }
-    u=tempPass[0]*1000+tempPass[1]*100+tempPass[2]*10+tempPass[3];
+    u = tempPass[0] * 1000 + tempPass[1] * 100 + tempPass[2] * 10 + tempPass[3];
     for (int i = 0; i < 5; ++i) {
-        if (u==hesab[i][pass]) {
-            userCount=i;
+        if (u == hesab[i][pass]) {
+            userCount = i;
         }
     }
     if (userCount == 10) {
-        if (u==ADMIN_PASSWORD) {
-                //todo add admin menu
+        if (u == ADMIN_PASSWORD) {
+            adminMenu();
         }
     }
 
@@ -165,7 +171,7 @@ void adminEftetahHesab() {
         count++;
     }
     out(14);
-    scanf("%d",& halgheh);
+    scanf("%d", &halgheh);
 }
 
 void language(char *l) {
@@ -236,6 +242,9 @@ void out(int code) {
                 case 3:
                     printf("ramze vorud ra vared konid:");
                     break;
+                case 4:
+
+                    break;
                 case 5:
                     printf("\n Ramze feli ra vared konid:   ");
                     break;
@@ -287,7 +296,7 @@ void out(int code) {
     }
 }
 
-void ChangePassword(){
+void ChangePassword() {
 
     int bool = 1;
     while (bool) {
@@ -355,20 +364,21 @@ void enteghaleVajh() {
     //system("cls");
 }
 
-void adminKolehesab(){
+void adminKolehesab() {
     printf("kole hesab ha:");
-    int j =1;
-    for(int i=0;i<=count;i++){
-        printf("\n hesabe %d:\n %d%d",j,hesab[i][shomareh], hesab[count][shomareh] / 10000);
+    int j = 1;
+    for (int i = 0; i <= count; i++) {
+        printf("\n hesabe %d:\n %d%d", j, hesab[i][shomareh], hesab[count][shomareh] / 10000);
         j++;
     }
     out(14);
-    scanf("%d",&halgheh);
+    scanf("%d", &halgheh);
 
 
 }
 
-int adminMnue() {do {
+int adminMnue() {
+    do {
         printf("\n1.Ejade hesab\t\t2.Hazfe hesab\n\n3.Rafe masdoodi\t\t4.Neshane hame hesabha\n\n5.Neshan kol mojoodi ha\t\t6.Khorooj");
         out(2);
         scanf("%d", &gozineh);
@@ -395,31 +405,32 @@ int adminMnue() {do {
                 break;
 
         }
-    }while(halgheh==1);
+    } while (halgheh == 1);
 }
 
-void RafeMasdoodi(){
+void RafeMasdoodi() {
     for (int i = 0; i <= count; ++i) {
-        if(hesab[count][masdoodi]==1)
-            hesab[count][masdoodi]=0;
+        if (hesab[count][masdoodi] == 1)
+            hesab[count][masdoodi] = 0;
         printf("hesab azad shod.");
 
     }
 }
-void hazfehHesab(){
-    for (int i = 0; i <=count ; ++i) {
 
-        if(hesab[i][shomareh]!=0) {
-            printf("hesab %d:%d%d",i+1, hesab[i][shomareh], hesab[i][shomareh] / 10000);
+void hazfehHesab() {
+    for (int i = 0; i <= count; ++i) {
+
+        if (hesab[i][shomareh] != 0) {
+            printf("hesab %d:%d%d", i + 1, hesab[i][shomareh], hesab[i][shomareh] / 10000);
 
         }
     }
     out(2);
-    scanf("%d",&gozineh);
+    scanf("%d", &gozineh);
     gozineh--;
-    hesab[gozineh][shomareh]=0;
-    hesab[gozineh][pass]=0;
-    hesab[gozineh][mojoodi]=0;
+    hesab[gozineh][shomareh] = 0;
+    hesab[gozineh][pass] = 0;
+    hesab[gozineh][mojoodi] = 0;
 
 
 }
