@@ -7,7 +7,7 @@
 char LANGUAGE = 'F', tmp = ' ';
 int choice, moj = 10000000, tempPass[5], password[5], hesab[5][3], count = 0, shomareh = 0, pass = 1, mojoodi = 2, masdoodi = 3, halgheh, gozineh, userCount = 10;
 
-int adminMnue();
+int adminMenu();
 
 int moghayeseh(int *a, int *b);
 
@@ -25,8 +25,6 @@ void adminKolehesab();
 
 void daryaftVajh();
 
-void adminMenu();
-
 void adminEftetahHesab();
 
 void adminMojoodiKol();
@@ -35,9 +33,11 @@ void RafeMasdoodi();
 
 void voroodeKarbar();
 
+void hazfehHesab();
+
 int main() {
 
-
+//todo
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 4; ++j) {
             hesab[i][j] = 0;
@@ -95,6 +95,7 @@ void voroodeKarbar() {
     for (int i = 0; i < 5; ++i) {
         if (u == hesab[i][pass]) {
             userCount = i;
+            break;
         }
     }
     if (userCount == 10) {
@@ -377,7 +378,7 @@ void adminKolehesab() {
 
 }
 
-int adminMnue() {
+int adminMenu() {
     do {
         printf("\n1.Ejade hesab\t\t2.Hazfe hesab\n\n3.Rafe masdoodi\t\t4.Neshane hame hesabha\n\n5.Neshan kol mojoodi ha\t\t6.Khorooj");
         out(2);
@@ -387,10 +388,10 @@ int adminMnue() {
                 adminEftetahHesab();
                 break;
             case 2 :
-
+                hazfehHesab();
                 break;
             case 3:
-
+                RafeMasdoodi();
                 break;
             case 4:
                 adminKolehesab();
