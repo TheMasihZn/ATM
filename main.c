@@ -4,6 +4,13 @@
 
 #define ADMIN_PASSWORD 1377
 //#include <curses.h>
+
+//todo age hesab masdood bood vared nasho
+//todo wtf is 10 in 3
+//todo kare user ha ra bar hasbe hesab[][] anjam bde
+//todo cls kon
+//todo zaban engelisi ra kamel kon
+//todo soorat hesab
 char LANGUAGE = 'F', tmp = ' ';
 int choice, moj = 10000000, tempPass[5], password[5], hesab[5][3], count = 0, shomareh = 0, pass = 1, mojoodi = 2, masdoodi = 3, halgheh, gozineh, userCount = 10;
 
@@ -12,7 +19,7 @@ int adminMenu();
 int moghayeseh(int *a, int *b);
 
 void out(int);
-
+//todo fuck language
 void language(char *);
 
 void ChangePassword();
@@ -35,6 +42,8 @@ void voroodeKarbar();
 
 void hazfehHesab();
 
+void userMenu();
+
 int main() {
 
 //todo
@@ -43,17 +52,12 @@ int main() {
             hesab[i][j] = 0;
         }
     }
-
     language(&LANGUAGE);
-//    system("cls");
-
-
     voroodeKarbar();
 
-    out(3);
-    system("clear");
+}
 
-
+void userMenu() {
     do {
         out(9);
         out(2);             //choice
@@ -82,28 +86,67 @@ int main() {
 
 
     } while (halgheh == 1);
+
 }
 
 void voroodeKarbar() {
-    int u = 0, j;
-    out(3);
-    for (j = 0; j < 4; ++j) {
-        scanf("%1d", &tempPass[j]);
+    int u = 0, j=0, passEshtebah;
+    do {
 
-    }
-    u = tempPass[0] * 1000 + tempPass[1] * 100 + tempPass[2] * 10 + tempPass[3];
-    for (int i = 0; i < 5; ++i) {
-        if (u == hesab[i][pass]) {
-            userCount = i;
-            break;
+        u=0;
+        out(19);
+        printf("1.Admin\n");
+        for (int k = 1; k < 6; ++k) {
+            if (hesab[k - 1][shomareh] != 0) {
+                printf("%d.%d%d\n", k + 1, hesab[k - 1][shomareh], hesab[k - 1][shomareh] / 10000);
+            }
         }
-    }
-    if (userCount == 10) {
-        if (u == ADMIN_PASSWORD) {
-            adminMenu();
-        }
-    }
 
+        scanf("%d", &gozineh);
+        if (gozineh == 1) {
+            userCount=6;
+        } else if (gozineh > 1 && gozineh < 7) {
+            userCount = gozineh - 2;
+            passEshtebah = 0;
+        }
+
+
+        while (1) {
+            out(3);
+            for (j = 0; j < 4; ++j) {
+                scanf("%1d", &tempPass[j]);
+
+            }
+
+            u = (tempPass[0] * 1000) + (tempPass[1] * 100) + (tempPass[2] * 10) + tempPass[3];
+
+            if (userCount == 6) {
+
+                if (u == ADMIN_PASSWORD) {
+                    adminMenu();
+                    break;
+                }
+
+
+            } else {
+                if (u == hesab[userCount][pass]) {
+                    userMenu();
+                    break;
+                } else {
+                    passEshtebah++;
+                    if (passEshtebah > 2) {
+                        hesab[userCount][masdoodi] = 1;
+                        out(20);
+                        break;
+                    } else {
+                        out(8);
+                    }
+                }
+            }
+        }
+
+
+    } while (halgheh < 10);
 }
 
 void daryaftVajh() {
@@ -146,15 +189,6 @@ void adminMojoodiKol() {
 
 void adminEftetahHesab() {
     int tmppassword[4];
-    printf("aya motmaenid?  \n");
-    printf("1.Bale\n2.Kheir\n");
-    int i;
-    scanf("%1d", &i);
-    if (i == 1) {
-        hesab[count][shomareh] = rand();
-        printf("Shomare hesabe moshtari : %d%d\n", hesab[count][shomareh], hesab[count][shomareh] / 10000);
-        printf("\nRamze kart ra vared konid");
-
         //todo yek adad 16 raghami be shomareh bede
         hesab[count][shomareh] = rand();
         printf("Ramze kart ra vared konid :   ");
@@ -170,7 +204,7 @@ void adminEftetahHesab() {
         printf("mojoodi :   %d\n", hesab[count][mojoodi]);
 
         count++;
-    }
+//todo fix out
     out(14);
     scanf("%d", &halgheh);
 }
@@ -184,7 +218,7 @@ void language(char *l) {
 
     }
 }
-
+//todo fuck moghayese
 int moghayeseh(int *a, int *b) {
     for (int i = 0; i < 4; ++i) {
         if (a[i] != b[i]) {
@@ -259,7 +293,7 @@ void out(int code) {
                     printf("Ramz eshtebah ast.\n");
                     break;
                 case 9:
-                    printf("\n\n 1.daryaafte Vajh\t\t2.Daryafte Mojoodi\n\n3.Enteghale Vajh\t\t4.Tghire ramz\n\n5.Sarfe nazar az anjame amaleiyat\n\n6.Sepordeh gozari\t\t7.Gereftane soorat hesab\n\ngozineh morede nazar ra vared konid:  ");
+                    printf("\n\n 1.daryaafte Vajh\t\t2.Daryafte Mojoodi\n\n3.Enteghale Vajh\t\t4.Tghire ramz\n\n5.Enseraf\t\t6.Sepordeh gozari\n\n7.Gereftane soorat hesab");
                     break;
                 case 10:
                     printf("mablaghe morede nazar be rial:    ");
@@ -287,8 +321,15 @@ void out(int code) {
                     break;
                 case 18:
                     printf("\n Lotfan kart khod ra bardarid.\nsepas gozarim baraye entekhab in aberbank.");
-
-
+                    break;
+                case 19:
+                    printf("Hesab Ha:\n");
+                    break;
+                case 20:
+                    printf("Hesab Masdood shod.\n");
+                    break;
+                case 21:
+                    printf("");
                     break;
                 default:
                     printf("Undefined!");
