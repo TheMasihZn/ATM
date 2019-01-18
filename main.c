@@ -4,9 +4,6 @@
 
 #define ADMIN_PASSWORD 1377
 
-//todo wtf is 10 in 3
-//todo cls kon
-//todo zaban engelisi ra kamel kon
 //todo soorat hesab
 
 char LANGUAGE = 'F';
