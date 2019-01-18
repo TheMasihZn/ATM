@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 #define ADMIN_PASSWORD 1377
-//#include <curses.h>
 
 //todo wtf is 10 in 3
 //todo cls kon
@@ -13,7 +12,8 @@
 char LANGUAGE = 'F';
 int mablagh, choice, moj = 10000000, tempPass[5], hesab[5][3],
         count = 0, shomareh = 0, pass = 1, mojoodi = 2, masdoodi = 3,
-        halgheh, gozineh, userCount = 10;
+        halghehUser=1,halgheVorood=1,halgheh=1, gozineh, userCount = 10;
+
 void mojoodiHesab();
 
 int adminMenu();
@@ -81,7 +81,7 @@ void userMenu() {
         }
 
 
-    } while (halgheh == 1);
+    } while (halghehUser == 1);
 
 }
 
@@ -145,13 +145,13 @@ void voroodeKarbar() {
         }
 
 
-    } while (halgheh < 10);
+    } while (halgheVorood);
 }
 
 void daryaftVajh() {
     out(10);
     mablagh = 0;
-    int gozineh, halgheh;
+    int gozineh;
     scanf("%d", &mablagh);
     if (mablagh > hesab[userCount][mojoodi])
         out(11);
@@ -166,7 +166,7 @@ void daryaftVajh() {
 
     }
     out(14);                    ///tasmim edameh
-    scanf("%d", &halgheh);
+    scanf("%d", &halghehUser);
 
 
 
@@ -313,10 +313,13 @@ void out(int code) {
                     printf("Hesab Masdood shod.\n");
                     break;
                 case 21:
-                    printf("\n\n shomareh kart:  %d%d\n mablagh daryafti:%d rial \n mojoodi:%d Rial", hesab[userCount][shomareh], hesab[userCount][shomareh] / 10000, mablagh, hesab[userCount][mojoodi]);
+                    printf("\n\n shomareh kart:  %d%d\n mablagh daryafti:%d rial \n mojoodi:%d Rial",
+                           hesab[userCount][shomareh], hesab[userCount][shomareh] / 10000, mablagh,
+                           hesab[userCount][mojoodi]);
                     break;
                 case 22:
-                    printf("\t\t\tBANK PASARGAD\n\t\t\tKode Shobeh:3921\nTarikh:1397/10/30\nZaman:10:00:00\nVajhe enteghali:%d\nKarte maghsad:", mablagh);
+                    printf("\t\t\tBANK PASARGAD\n\t\t\tKode Shobeh:3921\nTarikh:1397/10/30\nZaman:10:00:00\nVajhe enteghali:%d\nKarte maghsad:",
+                           mablagh);
                     break;
                 case 23:
                     printf("\nMojodi:%d", hesab[userCount][mojoodi]);
@@ -357,7 +360,7 @@ void ChangePassword() {
 
     }
     out(14);                    ///tasmim edameh
-    scanf("%d", &halgheh);
+    scanf("%d", &halghehUser);
 
 }
 
@@ -384,7 +387,7 @@ void enteghaleVajh() {
     out(17);
     out(23);
     out(14);
-    scanf("%d", &halgheh);
+    scanf("%d", &halghehUser);
     //system("cls");
 }
 
