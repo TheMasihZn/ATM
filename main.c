@@ -12,7 +12,7 @@
 char LANGUAGE = 'F';
 int mablagh, choice, moj = 10000000, tempPass[5], hesab[5][3],
         count = 0, shomareh = 0, pass = 1, mojoodi = 2, masdoodi = 3,
-        halghehUser=1,halgheVorood=1,halgheh=1, gozineh, userCount = 10;
+        halghehUser = 1, halgheVorood = 1, halgheh = 1, gozineh, userCount = 10;
 
 void mojoodiHesab();
 
@@ -86,12 +86,12 @@ void userMenu() {
 }
 
 void voroodeKarbar() {
-    int u, j = 0, passEshtebah = 0;
+    int u, j = 0, passEshtebah = 0, k = 1;
     do {
-
+        int k = 1;
         out(19);
         printf("1.Admin\n");
-        for (int k = 1; k < 6; ++k) {
+        for (; k < 6; ++k) {
             if (hesab[k - 1][shomareh] != 0) {
                 printf("%d.%d%d\n", k + 1, hesab[k - 1][shomareh], hesab[k - 1][shomareh] / 10000);
             }
@@ -102,7 +102,7 @@ void voroodeKarbar() {
             userCount = 6;
         } else if (gozineh > 1 && gozineh < 7) {
             userCount = gozineh - 2;
-            if(hesab[userCount][masdoodi]==1){
+            if (hesab[userCount][masdoodi] == 1) {
                 out(20);
                 continue;
             }
@@ -169,7 +169,6 @@ void daryaftVajh() {
     scanf("%d", &halghehUser);
 
 
-
 }
 
 void adminMojoodiKol() {
@@ -179,7 +178,7 @@ void adminMojoodiKol() {
     }
     printf("Mojoodi kol hesab ha :  %d", (int) sum);
     out(14);
-    scanf("%d",&halgheh);
+    scanf("%d", &halgheh);
 }
 
 void adminEftetahHesab() {
@@ -325,7 +324,7 @@ void out(int code) {
                     printf("\nMojodi:%d", hesab[userCount][mojoodi]);
                     break;
                 case 24:
-                    printf("\nShomareh kart :%d%d",hesab[userCount][shomareh], hesab[userCount][shomareh] / 10000);
+                    printf("\nShomareh kart :%d%d", hesab[userCount][shomareh], hesab[userCount][shomareh] / 10000);
                 default:
                     printf("Undefined!");
             }
@@ -435,17 +434,23 @@ int adminMenu() {
 }
 
 void RafeMasdoodi() {
-    for (int i = 0; i <= count; ++i) {
-        if (hesab[count][masdoodi] == 1)
-            //todo doros kon baraye chand hesab
-        printf("hesab azad shod.");
-
+    for (int k = 0; k < 5; ++k) {
+        if (hesab[k][masdoodi] != 0) {
+            printf("%d.%d%d\n", k + 1, hesab[k][shomareh], hesab[k][shomareh] / 10000);
+        }
     }
+
+    scanf("%d", &gozineh);
+    if (gozineh > 0 && gozineh < 6) {
+        hesab[gozineh-1][masdoodi] = 0;
+        printf("hesab azad shod.");
+    }
+
+
 }
 
 void hazfehHesab() {
     for (int i = 0; i <= count; ++i) {
-
         if (hesab[i][shomareh] != 0) {
             printf("hesab %d:%d%d", i + 1, hesab[i][shomareh], hesab[i][shomareh] / 10000);
 
@@ -461,7 +466,7 @@ void hazfehHesab() {
 
 }
 
-void mojoodiHesab(){
+void mojoodiHesab() {
     out(24);
     out(23);
 
