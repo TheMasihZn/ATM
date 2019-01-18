@@ -4,7 +4,6 @@
 
 #define ADMIN_PASSWORD 1377
 
-//todo soorat hesab
 
 char LANGUAGE = 'F';
 int mablagh, choice, tempPass[5], hesab[5][3],
@@ -46,6 +45,8 @@ void sepordehGozari();
 
 void variz();
 
+void sooratHesab();
+
 int main() {
 
     out(1);             //language
@@ -83,12 +84,10 @@ void userMenu() {
                 break;
             case 6:
                 sepordehGozari();
-                //sepordeh gozari
                 break;
             case 7:
-                //sourat hesab
+                sooratHesab();
                 break;
-
             default:
                 break;
         }
@@ -98,8 +97,28 @@ void userMenu() {
 
 }
 
-void sepordehGozari() {
+void sooratHesab() {
+    out(25);
+    for (int i = 0; i < 10; ++i) {
+        if (Daryaftiha[i]!=0) {
+            printf("+%d",Daryaftiha[i]);
+        }
+    }
 
+    out(26);
+    for (int i = 0; i < 10; ++i) {
+        if (variziha[i]!=0) {
+            printf("+%d",variziha[i]);
+        }
+    }
+
+}
+
+void sepordehGozari() {
+    out(10);
+    mablagh = 0;
+    scanf("%d", &mablagh);
+    hesab[userCount][mojoodi] += mablagh;
     variz();
 }
 
@@ -330,7 +349,7 @@ void out(int code) {
                     printf("Mablagh Morede nazar Ba Movaffaghiyat enteghal yaft.");
                     break;
                 case 17:
-                    printf("\nKarte mabda:");
+                    printf("\nKarte mabda:%d%d",hesab[userCount][shomareh],hesab[userCount][shomareh]/10000);
                     break;
                 case 18:
                     printf("\n Lotfan kart khod ra bardarid.\nsepas gozarim baraye entekhab in aberbank.");
@@ -355,6 +374,12 @@ void out(int code) {
                     break;
                 case 24:
                     printf("\nShomareh kart :%d%d", hesab[userCount][shomareh], hesab[userCount][shomareh] / 10000);
+                    break;
+                case 25:
+                    printf("Mabaleghe daryafti be sharhe zir ast:\n\n");
+                    break;
+                case 26:
+                    printf("Mabaleghe varizi be sharhe zir ast:\n\n");
                     break;
                 default:
                     printf("Undefined!");
@@ -399,13 +424,12 @@ void enteghaleVajh() {
     out(15);
     scanf("%8d%8d", &kartmaghsad1, &kartmaghsad2);
     out(10);
-    int mabagh;
-    scanf("%d", &mabagh);
-    if (mabagh > hesab[userCount][mojoodi])
+    scanf("%d", &mablagh);
+    if (mablagh > hesab[userCount][mojoodi])
         out(11);
     else {
 
-        hesab[userCount][mojoodi] -= mabagh;
+        hesab[userCount][mojoodi] -= mablagh;
         out(16);
         out(13);
         scanf("%d", &gozineh);
