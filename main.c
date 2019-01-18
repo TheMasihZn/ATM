@@ -14,6 +14,7 @@ char LANGUAGE = 'F';
 int mablagh, choice, moj = 10000000, tempPass[5], hesab[5][3],
         count = 0, shomareh = 0, pass = 1, mojoodi = 2, masdoodi = 3,
         halgheh, gozineh, userCount = 10;
+void mojoodiHesab();
 
 int adminMenu();
 
@@ -64,6 +65,7 @@ void userMenu() {
                 daryaftVajh();
                 break;
             case 2:
+                mojoodiHesab();
                 break;
             case 3:
                 enteghaleVajh();
@@ -167,6 +169,7 @@ void daryaftVajh() {
     scanf("%d", &halgheh);
 
 
+
 }
 
 void adminMojoodiKol() {
@@ -175,6 +178,8 @@ void adminMojoodiKol() {
         sum += hesab[i][mojoodi];
     }
     printf("Mojoodi kol hesab ha :  %d", (int) sum);
+    out(14);
+    scanf("%d",&halgheh);
 }
 
 void adminEftetahHesab() {
@@ -308,17 +313,16 @@ void out(int code) {
                     printf("Hesab Masdood shod.\n");
                     break;
                 case 21:
-                    printf("\n\n shomareh kart:  %d%d\n mablagh daryafti:%d rial \n mojoodi:%d Rial",
-                           hesab[userCount][shomareh], hesab[userCount][shomareh] / 10000, mablagh,
-                           hesab[userCount][mojoodi]);
+                    printf("\n\n shomareh kart:  %d%d\n mablagh daryafti:%d rial \n mojoodi:%d Rial", hesab[userCount][shomareh], hesab[userCount][shomareh] / 10000, mablagh, hesab[userCount][mojoodi]);
                     break;
                 case 22:
-                    printf("\t\t\tBANK PASARGAD\n\t\t\tKode Shobeh:3921\nTarikh:1397/10/30\nZaman:10:00:00\nVajhe enteghali:%d\nKarte maghsad:",
-                           mablagh);
+                    printf("\t\t\tBANK PASARGAD\n\t\t\tKode Shobeh:3921\nTarikh:1397/10/30\nZaman:10:00:00\nVajhe enteghali:%d\nKarte maghsad:", mablagh);
                     break;
                 case 23:
                     printf("\nMojodi:%d", hesab[userCount][mojoodi]);
                     break;
+                case 24:
+                    printf("\nShomareh kart :%d%d",hesab[userCount][shomareh], hesab[userCount][shomareh] / 10000);
                 default:
                     printf("Undefined!");
             }
@@ -431,7 +435,6 @@ void RafeMasdoodi() {
     for (int i = 0; i <= count; ++i) {
         if (hesab[count][masdoodi] == 1)
             //todo doros kon baraye chand hesab
-//            printf()
         printf("hesab azad shod.");
 
     }
@@ -452,6 +455,12 @@ void hazfehHesab() {
     hesab[gozineh][pass] = 0;
     hesab[gozineh][mojoodi] = 0;
 
+
+}
+
+void mojoodiHesab(){
+    out(24);
+    out(23);
 
 }
 
