@@ -463,15 +463,15 @@ void hazfehHesab() {
 
         if (hesab[i][shomareh] != 0) {
             printf("hesab %d:%d%d", i + 1, hesab[i][shomareh], hesab[i][shomareh] / 10000);
-
         }
-    }
+
+                                      }
     out(2);
     scanf("%d", &gozineh);
-    gozineh--;
-    hesab[gozineh][shomareh] = 0;
-    hesab[gozineh][pass] = 0;
-    hesab[gozineh][mojoodi] = 0;
+    hesab[gozineh-1][shomareh] = 0;
+    hesab[gozineh-1][pass] = 0;
+    hesab[gozineh-1][mojoodi] = 0;
+    printf("\nHesab mored nazar hazf shod.");
 
 
 }
@@ -490,6 +490,7 @@ void daryaftiha(){
     }
 
 }
+
 
 
 
