@@ -7,7 +7,7 @@
 //todo soorat hesab
 
 char LANGUAGE = 'F';
-int mablagh, choice, moj = 10000000, tempPass[5], hesab[5][3],
+int mablagh, choice, tempPass[5], hesab[5][3],
         count = 0, shomareh = 0, pass = 1, mojoodi = 2, masdoodi = 3,
         halghehUser = 1, halgheVorood = 1, halgheh = 1, gozineh, userCount = 10;
 int Daryaftiha[10], variziha[10];
@@ -104,7 +104,11 @@ void sepordehGozari() {
 }
 
 void variz() {
-
+    for (int i = 0; i < 10; ++i) {
+        if (variziha[i] == 0) {
+            variziha[i] = mablagh;
+        }
+    }
 }
 
 void voroodeKarbar() {
