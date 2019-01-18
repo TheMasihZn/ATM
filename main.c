@@ -12,13 +12,14 @@
 char LANGUAGE = 'F';
 int mablagh, choice, moj = 10000000, tempPass[5], hesab[5][3],
         count = 0, shomareh = 0, pass = 1, mojoodi = 2, masdoodi = 3,
-        halghehUser = 1, halgheVorood = 1, halgheh = 1, gozineh, userCount = 10;
-
+        halghehUser=1,halgheVorood=1,halgheh=1, gozineh, userCount = 10;
+int Daryaftiha[10],variziha[10];
 void mojoodiHesab();
 
 int adminMenu();
 
 void out(int);
+void daryaftiha();
 
 void ChangePassword();
 
@@ -75,7 +76,15 @@ void userMenu() {
                 break;
             case 5:
                 out(18);
+                halghehUser=0;
                 break;
+            case 6:
+                //sepordeh gozari
+                break;
+            case 7:
+                //sourat hesab
+                break;
+
             default:
                 break;
         }
@@ -158,6 +167,7 @@ void daryaftVajh() {
     else
         out(12);
     hesab[userCount][mojoodi] -= mablagh;
+    Daryaftiha[10];
     out(13);
     scanf("%d", &gozineh);
     if (gozineh == 1) {
@@ -165,6 +175,7 @@ void daryaftVajh() {
 
 
     }
+    daryaftiha();
     out(14);                    ///tasmim edameh
     scanf("%d", &halghehUser);
 
@@ -230,6 +241,8 @@ void out(int code) {
                 case 8:
                     printf("Wrong password.\n");
                     break;
+                case 9:
+                    printf("\n\n 1.Receiving mony\t\t2.Receiving inventory\n\n3.Mony transfer\t\t4.change password\n\n5.Quit\t\t6.Deposit\n\n7.account");
                 case 21:
                     printf("\n\n Card number :  %d\n Requested amount :  %d Rial(s) \n Remaining :  %d Rial(s)",
                            hesab[userCount][shomareh], mablagh, hesab[userCount][mojoodi]);
@@ -324,7 +337,8 @@ void out(int code) {
                     printf("\nMojodi:%d", hesab[userCount][mojoodi]);
                     break;
                 case 24:
-                    printf("\nShomareh kart :%d%d", hesab[userCount][shomareh], hesab[userCount][shomareh] / 10000);
+                    printf("\nShomareh kart :%d%d",hesab[userCount][shomareh], hesab[userCount][shomareh] / 10000);
+                    break;
                 default:
                     printf("Undefined!");
             }
@@ -383,6 +397,7 @@ void enteghaleVajh() {
         out(22);
 
     printf("%8d%8d", kartmaghsad1, kartmaghsad2);
+    daryaftiha();
     out(17);
     out(23);
     out(14);
@@ -453,15 +468,15 @@ void hazfehHesab() {
     for (int i = 0; i <= count; ++i) {
         if (hesab[i][shomareh] != 0) {
             printf("hesab %d:%d%d", i + 1, hesab[i][shomareh], hesab[i][shomareh] / 10000);
-
         }
-    }
+
+                                      }
     out(2);
     scanf("%d", &gozineh);
-    gozineh--;
-    hesab[gozineh][shomareh] = 0;
-    hesab[gozineh][pass] = 0;
-    hesab[gozineh][mojoodi] = 0;
+    hesab[gozineh-1][shomareh] = 0;
+    hesab[gozineh-1][pass] = 0;
+    hesab[gozineh-1][mojoodi] = 0;
+    printf("\nHesab mored nazar hazf shod.");
 
 
 }
@@ -471,6 +486,17 @@ void mojoodiHesab() {
     out(23);
 
 }
+void daryaftiha(){
+
+    for (int i = 0; i < 10; ++i) {
+        if (Daryaftiha[i]==0) {
+            Daryaftiha[i]=mablagh;
+        }
+    }
+
+}
+
+
 
 
 
