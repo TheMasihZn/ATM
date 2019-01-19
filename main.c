@@ -302,10 +302,10 @@ void out(int code) {
                     printf("\n How much do you want ?");
                     break;
                 case 11:
-                    printf("\n your balance isnt enough.");
+                    printf("\n your balance isn't enough.");
                     break;
                 case 12:
-                    printf("\n please get your mony");
+                    printf("\n please get your cash.");
                     break;
                 case 13:
                     printf("\n 1.Yes\t\t2.No\n do you want receipt?");
@@ -314,18 +314,47 @@ void out(int code) {
                     printf("\nDo you want to continio:\n 1.yes\t\t2.No");
                     break;
                     case 15:
-                        printf("");
+                    printf("Enter the target card number: ");
+                    break;
+                case 16:
+                    printf("Cash transfer was successful.");
+                    break;
+                case 17:
+                    printf("\nFrom card number: %d%d",hesab[userCount][shomareh],hesab[userCount][shomareh]/10000);
+                    break;
+                case 18:
+                    printf("\n please take out your card.\nThank you for choosing our bank.");
+                    break;
+                case 19:
+                    printf("accounts: \n");
+                    break;
+                case 20:
+                    printf("This account has been blocked.");
+                    break;
                 case 21:
                     printf("\n\n Card number :  %d\n Requested amount :  %d Rial(s) \n Remaining :  %d Rial(s)",
                            hesab[userCount][shomareh], mablagh, hesab[userCount][mojoodi]);
                     break;
                 case 22:
-                    printf("\t\t\tBANK PASARGAD\n\t\t\tcode branch:3921\ndate:1397/10/30\ntime:10:00:00\n cash move:%d\ntarget card:", mablagh);
+                    printf("\t\t\tPASARGAD BANK\n\t\t\tcode branch:3921\ndate:1397/10/30\ntime:10:00:00\n cash move:%d\ntarget card:", mablagh);
                     break;
 
                 case 23:
                     printf("\nRemaining : %d", hesab[userCount][mojoodi]);
                     break;
+                case 24:
+                    printf("\n Card number :%d%d", hesab[userCount][shomareh], hesab[userCount][shomareh] / 10000);
+                    break;
+                case 25:
+                    printf("Taken in cash:\n\n");
+                    break;
+                case 26:
+                    printf("Added to this account:\n\n");
+                    break;
+                case 27:
+                    printf("Cash deposited.");
+                    break;
+
                 default:
                     printf("Undefined!");
             }
@@ -415,6 +444,9 @@ void out(int code) {
                     break;
                 case 26:
                     printf("Mabaleghe varizi be sharhe zir ast:\n\n");
+                    break;
+                case 27:
+                    printf("\n Sepordeh gozari anjam shod.");
                     break;
                 default:
                     printf("Undefined!");
